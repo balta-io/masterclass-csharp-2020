@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="StrongPasswordGenerator.Mobile.MainPage">
+
+    <StackLayout>
+        <Frame BackgroundColor="#2196F3" Padding="24" CornerRadius="0">
+            <Label Text="Strong Password Generator" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
+        </Frame>
+
+        <StackLayout Padding="20">
+            <Label Text="Password Length"></Label>
+            <Entry Keyboard="Numeric" Text="{Binding Len, Mode=TwoWay}"></Entry>
+
+            <Label Text="Include special chars"></Label>
+            <CheckBox IsChecked="{Binding IncludeSpecialChars, Mode=TwoWay}"></CheckBox>
+
+            <Label Text="Use only upper case"></Label>
+            <CheckBox IsChecked="{Binding OnlyUpperCase, Mode=TwoWay}"></CheckBox>
+
+            <Label Text="Generate password over network (API)"></Label>
+            <CheckBox IsChecked="False"></CheckBox>
+
+            <Button Text="Generate" Margin="0,20,0,0" BackgroundColor="#2196F3" Clicked="GenerateLocalPassword"></Button>
+
+            <Label Text="{Binding GeneratedPassword, Mode=TwoWay}" HorizontalTextAlignment="Center" FontSize="Large" Margin="0,20,0,0"></Label>
+            <Button Text="Tap to copy" BackgroundColor="White" FontSize="Small" Clicked="CopyToClipBoard"></Button>
+        </StackLayout>
+
+    </StackLayout>
+
+</ContentPage>
