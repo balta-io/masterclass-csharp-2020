@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MyVault.Mobile.MainPage">
+
+    <StackLayout BackgroundColor="#171717">
+        <Image Source="Icon"
+           WidthRequest="{OnPlatform iOS=60, Android=60}"
+           Margin="30, 80, 0, 32"
+           HorizontalOptions="StartAndExpand" />
+
+        <Label Text="Hello, stranger" FontSize="Title" TextColor="#FFFFFF" Padding="30,30,30,0"/>
+        <Label Text="Here you can generate some passwords" TextColor="#FFFFFF" FontSize="16" Padding="30,0,30,32"/>
+
+        <Label Text="Password length" TextColor="#FFFFFF" FontSize="16" Padding="30,0,30,0"/>
+        <Entry Keyboard="Numeric" Text="{Binding Length, Mode=TwoWay}" Margin="30,0,30,0" BackgroundColor="#252525" TextColor="#FFFFFF" FontSize="28" />
+
+        <StackLayout Orientation="Horizontal" Margin="30,10,0,0">
+            <CheckBox Color="#F8C404" Scale="1.5" IsChecked="{Binding IncludeSpecialChars, Mode=TwoWay}" />
+            <Label Text="Include special characters" TextColor="#FFFFFF" FontSize="16" Margin="0,10,0,0"/>
+        </StackLayout>
+
+        <StackLayout Orientation="Horizontal" Margin="30,0,0,0">
+            <CheckBox Color="#F8C404" Scale="1.5" IsChecked="{Binding OnlyUpperCase, Mode=TwoWay}" />
+            <Label Text="Only upper case" TextColor="#FFFFFF" FontSize="16" Margin="0,10,0,0"/>
+        </StackLayout>
+
+        <Button Text="Generate" Clicked="HandleFormSubmit" BackgroundColor="#F8C404" TextColor="#000000" Margin="30,30,30,0" />
+
+        <Label Text="{Binding GeneratedPassword, Mode=TwoWay}" FontSize="32" HorizontalTextAlignment="Center" TextColor="#FFFFFF" Padding="30,60,30,0"/>
+        <Button Text="Copy to clipboard" TextColor="#F8C404" />
+    </StackLayout>
+
+</ContentPage>

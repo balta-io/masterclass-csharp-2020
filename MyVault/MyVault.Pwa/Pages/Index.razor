@@ -1,0 +1,53 @@
+﻿@page "/"
+@using MyVault.Core
+@inject IJSRuntime JS;
+
+<img src="images/icon-small.png" alt="Strong Password Generator" width="60">
+<h1>Hello, <strong>stranger</strong>!</h1>
+Here you can generate some passwords <br>
+<br>
+
+<small>Password length</small><br>
+<input type="number" placeholder="Length" @bind-value="Length"><br>
+<br>
+
+<input type="checkbox" id="include-special-chars" name="include-special-chars" @bind="IncludeSpecialCharacters">
+<label for="include-special-chars">Include special characters</label>
+<br>
+
+<input type="checkbox" id="only-upper-case" name="only-upper-case" @bind="OnlyUpperCase">
+<label for="only-upper-case">Only upper case</label>
+<br>
+
+<input type="checkbox" id="store-locally" name="store-locally" @bind="StoreLocally">
+<label for="store-locally">Store passwords on this device</label>
+<br>
+<br>
+
+<button @onclick="Generate">Generate</button>
+
+<br>
+<hr>
+<br>
+
+<p class="text-center">
+    <input class="generated-password" type="text" name="generated-password" id="generated-password"
+        @bind-value="GeneratedPassword">
+    <br>
+    <a href="#" onclick="copyToClipboard()">copy to clipboard</a>
+</p>
+
+@code {
+    public int Length = 8;
+    public bool IncludeSpecialCharacters = true;
+    public bool OnlyUpperCase = false;
+    public bool StoreLocally = false;
+    public string GeneratedPassword = Password.Generate(8, true, false);
+
+    public async Task Generate()
+    {
+        GeneratedPassword = Password.Generate(Length, IncludeSpecialCharacters, OnlyUpperCase);
+        if (StoreLocally)
+            await JS.InvokeAsync<string>("save", GeneratedPassword);
+    }
+}
