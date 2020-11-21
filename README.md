@@ -128,3 +128,6 @@ https://www.xamarinhelp.com/custom-fonts-xamarin-forms/
 
 Image
 https://docs.microsoft.com/pt-br/xamarin/get-started/tutorials/image/?tabs=vsmac&tutorial-step=3
+
+Copy to Clipboard
+https://docs.microsoft.com/pt-br/xamarin/essentials/clipboard
